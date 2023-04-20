@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@500&display=swap');
 :root {
   --clr-white: hsl(0, 0%, 100%);
+  --clr-tans-white: hsla(0, 0%, 100%, 0.8);
   --clr-black: hsl(240, 67%, 8%);
   --clr-dark-grey: hsl(240, 17%, 26%);
   --clr-light-grey: hsl(240, 6%, 54%);
@@ -24,6 +25,9 @@
 
   --h4-spacing: 1px;
   --h1-line: 103px;
+  --h1-size: 80px;
+  --body-size: 17px;
+  --body-line: 25px;
 }
 
 * {
@@ -34,7 +38,6 @@
   border: none;
   box-sizing: border-box;
 }
-
 
 
 body {
