@@ -17,14 +17,18 @@
       <nav>
         <ol class="header-list">
           <li v-for="planet in links" :key="planet.name">
-            <a href="#" target="_blank">{{ planet.name }}</a>
+            <router-link :to="{ name: 'planet', params: { name: planet.name } }">{{
+              planet.name
+            }}</router-link>
           </li>
         </ol>
 
         <ol class="header-list-mobile" v-if="isOpen">
           <li v-for="planet in links" :key="planet.name">
             <div class="link-ball" :style="{ backgroundColor: planet.color }"></div>
-            <a href="#" target="_blank">{{ planet.name }}</a>
+            <router-link :to="{ name: 'planet', params: { name: planet.name } }">{{
+              planet.name
+            }}</router-link>
             <img class="chevron" src="../assets/icon-chevron.svg" alt="chevron icon" />
           </li>
         </ol>

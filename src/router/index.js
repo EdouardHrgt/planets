@@ -1,22 +1,27 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Header from '../components/Header.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import PlanetView from '../views/PlanetView.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: Header
+    component: HomeView,
   },
-
-]
+  {
+    path: '/planet/:name',
+    name: 'planet',
+    component: PlanetView,
+  },
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
