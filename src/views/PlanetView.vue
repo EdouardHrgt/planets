@@ -3,6 +3,18 @@
     <header-bar />
 
     <main>
+      <section class="mobile-links">
+        <button>
+          <p>overview</p>
+        </button>
+        <button>
+          <p>structure</p>
+        </button>
+        <button>
+          <p>surface</p>
+        </button>
+      </section>
+
       <div class="grid">
         <div class="planet-img">
           <img
@@ -12,15 +24,16 @@
         </div>
 
         <div class="planet-infos">
-          <h2>{{ changePlanet.name }}</h2>
-          <p class="planet-description">
-            {{ changePlanet.overview.content }}
-          </p>
-          <p class="planet-source">
-            Source: <a :href="changePlanet.overview.source" target="_blank">Wikipedia</a>
-            <img src="../assets/icon-source.svg" alt="#" />
-          </p>
-
+          <div class="planet-texts">
+            <h2>{{ changePlanet.name }}</h2>
+            <p class="planet-description">
+              {{ changePlanet.overview.content }}
+            </p>
+            <p class="planet-source">
+              Source: <a :href="changePlanet.overview.source" target="_blank">Wikipedia</a>
+              <img src="../assets/icon-source.svg" alt="#" />
+            </p>
+          </div>
           <div class="planet-links">
             <button>
               <p><span>01</span>overview</p>
@@ -79,6 +92,10 @@ export default {
 </script>
 
 <style scoped>
+.mobile-links {
+  display: none;
+}
+
 h2,
 h3,
 h4 {
@@ -181,7 +198,139 @@ button:hover {
 }
 
 .metric h3 {
-  font-size: 40px;
+  font-size: 35px;
   margin: 0.8rem 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .grid,
+  .planet-metrics {
+    max-width: 95%;
+  }
+  .grid {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .planet-img {
+    margin: 0 0 5rem 0;
+  }
+  .planet-infos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .planet-description {
+    max-width: 25em;
+  }
+  .metric {
+    width: 164px;
+    padding: 1rem 0 1rem 1rem;
+  }
+  .metric p {
+    font-size: 12px;
+  }
+  .metric h3 {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .grid,
+  .planet-metrics {
+    max-width: 97%;
+  }
+}
+
+@media screen and (max-width: 735px) {
+  button p {
+    font-size: 14px;
+  }
+
+  button span {
+    margin: 0 0.7rem 0 0;
+  }
+  button {
+    padding: 0.7rem 0 0.7rem 1rem;
+  }
+  .planet-description {
+    max-width: 22em;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .mobile-links {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--clr-dark-grey);
+    border-top: 1px solid var(--clr-dark-grey);
+  }
+
+  .mobile-links button {
+    border: none;
+    padding: 0.7rem 0;
+    display: block;
+    position: relative;
+  }
+
+  .mobile-links button p {
+    color: var(--clr-light-grey);
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .mobile-links button::before {
+    content: '';
+    height: 3px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    background-color: var(--clr-mercure);
+    position: absolute;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .mobile-links button:hover {
+    color: var(--clr-white);
+  }
+
+  .mobile-links button:hover::before {
+    opacity: 1;
+  }
+
+  .grid,
+  .planet-metrics {
+    max-width: 90%;
+  }
+
+  .planet-links {
+    display: none;
+  }
+
+  .planet-infos {
+    justify-content: center;
+  }
+
+  .planet-texts {
+    text-align: center;
+  }
+
+  .planet-metrics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .metric {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 </style>

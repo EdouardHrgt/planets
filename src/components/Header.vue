@@ -188,6 +188,12 @@ ol li a:hover::before {
   .header-list-mobile {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    min-width: 100%;
+    position: absolute;
+    inset: 90px 0 0 0;
+    z-index: 100;
+    background-color: var(--clr-black);
   }
 
   .header-list-mobile li {
