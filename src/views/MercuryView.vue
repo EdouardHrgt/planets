@@ -15,5 +15,11 @@ export default {
     HeaderBar,
     PlanetPage,
   },
+  props: {
+    top: String,
+    bottom: String,
+    left: String,
+    right: String,
+  },
 };
 </script>

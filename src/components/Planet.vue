@@ -16,18 +16,20 @@
       <div class="grid">
         <div class="planet-img" ref="planetsPhone">
           <img
-            v-if="showPlanet == 1"
+            v-show="showPlanet == 1"
             :src="require('../assets/planets/' + changePlanet.images.planet)"
             :alt="changePlanet.name"
+            class="animate__animated animate__fadeInLeft"
           />
           <img
-            v-if="showPlanet == 2"
+            v-show="showPlanet == 2"
             :src="require('../assets/planets/' + changePlanet.images.internal)"
             :alt="changePlanet.name"
+            class="animate__animated animate__fadeInLeft"
           />
           <img
-            class="planet-thumbnail"
-            v-if="showThumbnail"
+            class="planet-thumbnail animate__animated animate__fadeIn animate__delay-1s"
+            v-show="showThumbnail"
             :src="require('../assets/planets/' + changePlanet.images.geology)"
             :alt="changePlanet.name"
           />
@@ -91,6 +93,10 @@ export default {
       showPlanet: 1,
       showThumbnail: false,
       isAnimate: false,
+      positions: {
+        bottom: null,
+        left: null,
+      },
       // Toggle 'active' class for planets overviews links
       p1: true,
       p2: false,
@@ -100,6 +106,7 @@ export default {
   created() {
     this.changePlanet = this.planets.find((n) => n.name == this.$route.name);
     this.colorTheme = this.planets.find((n) => n.name == this.$route.name).color;
+    console.log(this.positions);
   },
   methods: {
     planetSwaper(e) {
@@ -131,6 +138,10 @@ export default {
 </script>
 
 <style scoped>
+.animate__animated.animate__fadeInLeft {
+  --animate-duration: 1.5s;
+}
+
 main {
   --clr-theme: v-bind('colorTheme');
 }
@@ -182,6 +193,8 @@ p {
   position: absolute;
   bottom: -120px;
   left: 50%;
+  /* bottom: v-bind('positions.bottom');
+  left: v-bind('positions.left'); */
   transform: translate(-50%, 0);
 }
 
