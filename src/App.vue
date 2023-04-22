@@ -17,7 +17,7 @@
   --clr-mercure: hsl(194, 48%, 49%);
   --clr-jupiter: hsl(2, 68%, 53%);
   --clr-earth: hsl(263, 67%, 51%);
-  --clr-mars: hsl(263, 67%, 51%);
+  --clr-mars: hsl(10, 63%, 51%);
   --clr-neptune: hsl(222, 87%, 56%);
   --clr-saturn: hsl(17, 73%, 46%);
   --clr-uranus: hsl(169, 73%, 44%);
