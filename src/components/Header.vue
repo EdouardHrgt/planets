@@ -41,14 +41,14 @@ export default {
   data() {
     return {
       links: [
-        { name: 'mercury' },
-        { name: 'venus' },
-        { name: 'earth' },
-        { name: 'mars' },
-        { name: 'jupiter' },
-        { name: 'saturn' },
-        { name: 'uranus' },
-        { name: 'neptune' },
+        { name: 'mercury', color: 'hsl(194, 48%, 49%)' },
+        { name: 'venus', color: 'hsl(33, 82%, 64%)' },
+        { name: 'earth', color: 'hsl(263, 67%, 51%)' },
+        { name: 'mars', color: 'hsl(10, 63%, 51%)' },
+        { name: 'jupiter', color: 'hsl(2, 68%, 53%)' },
+        { name: 'saturn', color: 'hsl(17, 73%, 46%)' },
+        { name: 'uranus', color: 'hsl(169, 73%, 44%)' },
+        { name: 'neptune', color: 'hsl(222, 87%, 56%)' },
       ],
       isOpen: false,
     };
@@ -61,6 +61,7 @@ export default {
   methods: {
     toggleMenu() {
       this.isOpen = !this.isOpen;
+      console.log(this.planets);
     },
   },
 };
@@ -216,11 +217,12 @@ ol li a:hover::before {
 
   .link-ball {
     display: block;
+    margin-left: 2rem;
   }
 
   .chevron {
     position: absolute;
-    right: 1rem;
+    right: 2rem;
   }
 }
 </style>

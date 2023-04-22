@@ -19,13 +19,13 @@
             v-show="showPlanet == 1"
             :src="require('../assets/planets/' + changePlanet.images.planet)"
             :alt="changePlanet.name"
-            class="animate__animated animate__fadeInLeft"
+            class="animate__animated animate__fadeInLeft image-big"
           />
           <img
             v-show="showPlanet == 2"
             :src="require('../assets/planets/' + changePlanet.images.internal)"
             :alt="changePlanet.name"
-            class="animate__animated animate__fadeInLeft"
+            class="animate__animated animate__fadeInLeft image-big"
           />
           <img
             class="planet-thumbnail animate__animated animate__fadeIn animate__delay-1s"
@@ -85,6 +85,9 @@
 import data from '/data.json';
 export default {
   name: 'PlanetPage',
+  props: {
+    posBottom: String,
+  },
   data() {
     return {
       colorTheme: null,
@@ -93,10 +96,6 @@ export default {
       showPlanet: 1,
       showThumbnail: false,
       isAnimate: false,
-      positions: {
-        bottom: null,
-        left: null,
-      },
       // Toggle 'active' class for planets overviews links
       p1: true,
       p2: false,
@@ -106,7 +105,6 @@ export default {
   created() {
     this.changePlanet = this.planets.find((n) => n.name == this.$route.name);
     this.colorTheme = this.planets.find((n) => n.name == this.$route.name).color;
-    console.log(this.positions);
   },
   methods: {
     planetSwaper(e) {
@@ -183,18 +181,24 @@ p {
   justify-content: space-between;
 }
 
+.planet-img,
+.planet-infos {
+}
+
 .planet-img {
   margin: 0 0 2.5rem 7rem;
   position: relative;
 }
 
+.planet-img .image-big {
+  max-width: 525px;
+}
+
 .planet-thumbnail {
   max-width: 158px;
   position: absolute;
-  bottom: -120px;
+  bottom: v-bind('posBottom');
   left: 50%;
-  /* bottom: v-bind('positions.bottom');
-  left: v-bind('positions.left'); */
   transform: translate(-50%, 0);
 }
 

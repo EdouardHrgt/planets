@@ -1,8 +1,7 @@
 <template>
   <div>
     <header-bar theme="hsl(33, 82%, 64%)" />
-    <PlanetPage />
-    <h1>Venus</h1>
+    <PlanetPage pos-bottom="-100px" />
   </div>
 </template>
 
@@ -14,12 +13,6 @@ export default {
   components: {
     HeaderBar,
     PlanetPage,
-  },
-  props: {
-    top: String,
-    bottom: String,
-    left: String,
-    right: String,
   },
 };
 </script>
