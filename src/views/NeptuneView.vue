@@ -1,0 +1,19 @@
+<template>
+  <div>
+    <header-bar theme="hsl(222, 87%, 56%)" />
+    <PlanetPage />
+    <h1>Neptune</h1>
+  </div>
+</template>
+
+<script>
+import HeaderBar from '@/components/Header.vue';
+import PlanetPage from '@/components/Planet.vue';
+export default {
+  name: 'NeptuneView',
+  components: {
+    HeaderBar,
+    PlanetPage,
+  },
+};
+</script>

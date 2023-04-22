@@ -5,6 +5,10 @@
 </template>
 
 <style>
+.temp {
+  color: red;
+  font-size: 2rem;
+}
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@500&display=swap');
 :root {
@@ -38,7 +42,6 @@
   border: none;
   box-sizing: border-box;
 }
-
 
 body {
   background-color: var(--clr-black);

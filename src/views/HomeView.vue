@@ -6,6 +6,7 @@
 
 <script>
 import HeaderBar from '@/components/Header.vue';
+
 export default {
   name: 'HomeView',
   components: {

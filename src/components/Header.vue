@@ -13,22 +13,17 @@
           <g fill="#FFF" fill-rule="evenodd"><path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z" /></g>
         </svg>
       </div>
-
       <nav>
         <ol class="header-list">
           <li v-for="planet in links" :key="planet.name">
-            <router-link :to="{ name: 'planet', params: { name: planet.name } }">{{
-              planet.name
-            }}</router-link>
+            <router-link :to="{ name: planet.name }">{{ planet.name }}</router-link>
           </li>
         </ol>
 
         <ol class="header-list-mobile" v-if="isOpen">
           <li v-for="planet in links" :key="planet.name">
             <div class="link-ball" :style="{ backgroundColor: planet.color }"></div>
-            <router-link :to="{ name: 'planet', params: { name: planet.name } }">{{
-              planet.name
-            }}</router-link>
+            <router-link :to="{ name: planet.name }">{{ planet.name }}</router-link>
             <img class="chevron" src="../assets/icon-chevron.svg" alt="chevron icon" />
           </li>
         </ol>
@@ -40,20 +35,28 @@
 <script>
 export default {
   name: 'HeaderBar',
+  props: {
+    theme: String,
+  },
   data() {
     return {
       links: [
-        { name: 'mercury', color: 'hsl(194, 48%, 49%)' },
-        { name: 'venus', color: 'hsl(33, 82%, 64%)' },
-        { name: 'earth', color: 'hsl(263, 67%, 51%)' },
-        { name: 'mars', color: 'hsl(10, 63%, 51%)' },
-        { name: 'jupiter', color: 'hsl(2, 68%, 53%)' },
-        { name: 'saturn', color: 'hsl(17, 73%, 46%)' },
-        { name: 'uranus', color: 'hsl(169, 73%, 44%)' },
-        { name: 'neptune', color: 'hsl(222, 87%, 56%)' },
+        { name: 'mercury' },
+        { name: 'venus' },
+        { name: 'earth' },
+        { name: 'mars' },
+        { name: 'jupiter' },
+        { name: 'saturn' },
+        { name: 'uranus' },
+        { name: 'neptune' },
       ],
       isOpen: false,
     };
+  },
+  computed: {
+    computedColor() {
+      return this.theme;
+    },
   },
   methods: {
     toggleMenu() {
@@ -121,10 +124,10 @@ ol li a {
 
 ol li a::before {
   content: '';
-  height: 3px;
+  height: 4px;
   width: 100%;
-  top: -43px;
-  background-color: var(--clr-mercure);
+  top: -44px;
+  background-color: v-bind('computedColor');
   position: absolute;
   opacity: 0;
   transition: 0.3s;

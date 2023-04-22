@@ -1,7 +1,5 @@
 <template>
-  <div class="about">
-    <header-bar />
-
+  <div>
     <main>
       <section class="mobile-links">
         <div class="planet-changer-mobile">
@@ -82,35 +80,26 @@
 </template>
 
 <script>
-import HeaderBar from '@/components/Header.vue';
 import data from '/data.json';
 export default {
-  name: 'PlanetView',
-  components: {
-    HeaderBar,
-  },
+  name: 'PlanetPage',
   data() {
     return {
-      temp: 'red',
       colorTheme: null,
       planets: data,
+      changePlanet: null,
       showPlanet: 1,
       showThumbnail: false,
+      isAnimate: false,
       // Toggle 'active' class for planets overviews links
       p1: true,
       p2: false,
       p3: false,
     };
   },
-  computed: {
-    changePlanet() {
-      return this.planets.find((n) => n.name == this.$route.params.name);
-    },
-  },
-  mounted() {
-    this.changePlanet;
-    this.colorTheme = this.planets.find((n) => n.name == this.$route.params.name).color;
-    console.log(this.colorTheme);
+  created() {
+    this.changePlanet = this.planets.find((n) => n.name == this.$route.name);
+    this.colorTheme = this.planets.find((n) => n.name == this.$route.name).color;
   },
   methods: {
     planetSwaper(e) {
@@ -120,13 +109,16 @@ export default {
       if (el == 'structure') {
         this.showPlanet = 2;
         this.p2 = true;
+        this.isAnimate = true;
       } else if (el == 'geology') {
         this.showThumbnail = true;
         this.showPlanet = 1;
         this.p3 = true;
+        this.isAnimate = true;
       } else {
         this.showPlanet = 1;
         this.p1 = true;
+        this.isAnimate = true;
       }
     },
     removeClass() {
@@ -139,6 +131,9 @@ export default {
 </script>
 
 <style scoped>
+main {
+  --clr-theme: v-bind('colorTheme');
+}
 .mobile-links {
   display: none;
 }
@@ -171,7 +166,7 @@ p {
 }
 
 .grid {
-  margin: 7rem auto 0;
+  margin: 4.5rem auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -416,6 +411,19 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+@keyframes appearing {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  50% {
+    left: -1000px;
+  }
+  100% {
+    display: none;
   }
 }
 </style>
